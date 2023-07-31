@@ -1,33 +1,30 @@
 package com.apitool.apitool;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainApplication extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
-        // Create a label to display "Hello, World!"
-        Label helloLabel = new Label("Hello, World!");
+    public void start(Stage primaryStage) throws IOException {
 
-        // Create a button
-        Button button = new Button("Click Me!");
-        button.setOnAction(e -> System.out.println("Hello, World!"));
-
-        // Create a layout to hold the label and button
-        StackPane root = new StackPane();
-        root.getChildren().addAll(helloLabel, button);
-
-        // Create the scene and add the layout to it
-        Scene scene = new Scene(root, 300, 200);
+        Parent root = FXMLLoader.load(getClass().getResource("/com/apitool/apitool/main-view.fxml"));
 
         // Set the scene on the primary stage and show it
+        Scene scene = new Scene(root, 800, 600);
+
+        // Add the CSS stylesheet to the scene
+        scene.getStylesheets().add(getClass().getResource("/com/apitool/apitool/styles.css").toExternalForm());
+
         primaryStage.setTitle("Hello, World JavaFX App");
         primaryStage.setScene(scene);
+
+       // primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

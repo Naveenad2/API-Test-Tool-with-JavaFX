@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.apitool.apitool.MainController" prefWidth="800" prefHeight="600" styleClass="root">
+    <children>
+        <MenuBar>
+            <Menu text="File">
+                <MenuItem text="Open" />
+                <MenuItem text="Save" />
+                <MenuItem text="Exit" />
+            </Menu>
+            <!-- Add more menus as needed -->
+        </MenuBar>
+        <HBox spacing="10" styleClass="hbox">
+            <Label text="API URL:" styleClass="label" />
+            <TextField fx:id="urlTextField" promptText="Enter API URL" styleClass="text-field" />
+            <Button fx:id="sendButton" text="Send Request" styleClass="send-button" onAction="#handleSendRequest" />
+        </HBox>
+        <HBox spacing="10" styleClass="hbox">
+            <Label text="Request Type:" styleClass="label" />
+            <TextField fx:id="requestTypeTextField" promptText="GET, POST, etc." styleClass="text-field" />
+            <!-- Add more input fields for other request parameters as needed -->
+        </HBox>
+        <VBox spacing="10" styleClass="vbox">
+            <HBox spacing="10">
+                <Button text="Add Header" styleClass="small-button"  />
+                <Button text="Add Body Parameter" styleClass="small-button"  />
+                <!-- Add more buttons for other functionalities -->
+            </HBox>
+            <Label text="Headers:" styleClass="label" />
+            <TextArea fx:id="headersTextArea" promptText="Add headers here" prefHeight="100" styleClass="text-area"  />
+        </VBox>
+        <VBox spacing="10" styleClass="vbox">
+            <Label text="Body Parameters:" styleClass="label" />
+            <TextArea fx:id="bodyParamsTextArea" promptText="Add body parameters here" prefHeight="100" styleClass="text-area" />
+        </VBox>
+        <HBox spacing="10" styleClass="hbox">
+            <Button text="Clear" styleClass="small-button" />
+            <Button fx:id="sendButton" text="Send Request" styleClass="send-button" onAction="#handleSendRequest" />
+        </HBox>
+        <StackPane styleClass="response-pane">
+            <TextArea fx:id="responseTextArea" prefHeight="300" editable="false" wrapText="true" styleClass="text-area" />
+        </StackPane>
+    </children>
+</VBox>

@@ -1,0 +1,50 @@
+.root {
+    -fx-background-color: #212121;
+}
+
+.label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.text-field {
+    -fx-background-color: #424242;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px;
+}
+
+.small-button {
+    -fx-background-color: #424242;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-pref-width: 120px;
+}
+
+.send-button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-pref-width: 150px;
+}
+
+.text-area {
+    -fx-background-color: #424242;
+    -fx-text-fill: black; /* Set the text color to black */
+    -fx-font-size: 14px;
+}
+
+.vbox {
+    -fx-padding: 10px;
+    -fx-background-color: #303030;
+}
+
+.hbox {
+    -fx-padding: 10px;
+}
+
+.response-pane {
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
