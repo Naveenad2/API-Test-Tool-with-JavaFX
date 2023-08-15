@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ToggleButton?>
 <VBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.apitool.apitool.MainController" prefWidth="800" prefHeight="600" styleClass="root">
     <children>
         <MenuBar>
@@ -48,6 +49,19 @@
             <Button text="Clear" styleClass="small-button" />
             <Button fx:id="sendButton" text="Send Request" styleClass="send-button" onAction="#handleSendRequest" />
         </HBox>
+        <!-- <HBox spacing="10" styleClass="hbox">-->
+            <!-- ToggleButton for switching between Cookies and Body sections -->
+            <ToggleButton fx:id="sectionToggleButton" text="Body" styleClass="toggle-button" />
+        </HBox>
+        <HBox spacing="10" styleClass="hbox">
+            <!-- ToggleButton for switching between Cookies and Body sections -->
+            <ToggleButton fx:id="sectionToggleButto" text="Cookies"  styleClass="toggle-button" />
+        </HBox>
+        <HBox spacing="10" styleClass="hbox">
+            <!-- ToggleButton for switching between Cookies and Body sections -->
+            <ToggleButton fx:id="sectionToggleButt" text="Header"  styleClass="toggle-button" />
+        </HBox>
+
         <StackPane styleClass="response-pane">
             <TextArea fx:id="responseTextArea" prefHeight="300" editable="false" wrapText="true" styleClass="text-area" />
         </StackPane>
