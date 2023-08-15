@@ -37,8 +37,67 @@ public class MainController {
         String url = urlTextField.getText();
         String requestType = requestTypeTextField.getText();
 
+        if (requestType.equalsIgnoreCase("post")) {
+            try {
+                URL apiUrl = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true); // Enable output for POST request
+
+                String requestBody = bodyParamsTextArea.getText(); // Read body parameters
+                connection.getOutputStream().write(requestBody.getBytes());
+
+                //get the response
+                ResponseInterface responseReader = new ResponseReader();
+                responseReader.Reader(connection, responseTextArea, requestType, requestBody);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle any exceptions that occur during the API request // For example, display an error message in the responseTextArea
+                responseTextArea.setText("Error occurred during API request: " + e.getMessage());
+            }
+        }
+        else if (requestType.equalsIgnoreCase("put")) {
+            try {
+                URL apiUrl = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
+                connection.setRequestMethod("PUT");
+                connection.setDoOutput(true);
+
+                String requestBody = bodyParamsTextArea.getText();
+                connection.getOutputStream().write(requestBody.getBytes());
+
+                // get the response
+                ResponseInterface responseReader = new ResponseReader();
+                responseReader.Reader(connection, responseTextArea, requestType, requestBody);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle any exceptions that occur during the API request // For example, display an error message in the responseTextArea
+                responseTextArea.setText("Error occurred during API request: " + e.getMessage());
+            }
+        }
+        if (requestType.equalsIgnoreCase("delete")) {
+            try {
+                URL apiUrl = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
+                connection.setRequestMethod("DELETE");
+
+
+                // get the response
+                ResponseInterface responseReader = new ResponseReader();
+                responseReader.Reader(connection, responseTextArea);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle any exceptions that occur during the API request // For example, display an error message in the responseTextArea
+                responseTextArea.setText("Error occurred during API request: " + e.getMessage());
+            }
+        }
         // If the Request Type is "get" (case-insensitive), perform the GET request
-        if (requestType.equalsIgnoreCase("get")) {
+         else if (requestType.equalsIgnoreCase("get")) {
             try {
                 // Create a URL object from the API URL string
                 URL apiUrl = new URL(url);
@@ -49,28 +108,14 @@ public class MainController {
                 // Set the request method to GET
                 connection.setRequestMethod("GET");
 
+
+
                 // Read the response from the API
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                    StringBuilder responseContent = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        responseContent.append(line);
-                        responseContent.append("\n");
-                    }
+// get the response
+                ResponseInterface responseReader = new ResponseReader();
+                responseReader.Reader(connection, responseTextArea);
 
-                    // Display the response in the TextArea
-                    responseTextArea.setText(responseContent.toString());
 
-                    // Print the response to the console
-                   // System.out.println("API Response:\n" + responseContent.toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    // Handle any exceptions that occur during the API request // For example, display an error message in the responseTextArea
-                    responseTextArea.setText("Error occurred during API request: " + e.getMessage());
-                } finally {
-                    // Disconnect the connection
-                    connection.disconnect();
-                }
             } catch (IOException e) {
                 e.printStackTrace();
                 // Handle any exceptions that occur when opening the connection

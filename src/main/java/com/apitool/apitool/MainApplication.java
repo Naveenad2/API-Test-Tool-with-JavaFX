@@ -21,7 +21,7 @@ public class MainApplication extends Application {
         // Add the CSS stylesheet to the scene
         scene.getStylesheets().add(getClass().getResource("/com/apitool/apitool/styles.css").toExternalForm());
 
-        primaryStage.setTitle("Hello, World JavaFX App");
+        primaryStage.setTitle("Api Testting Tool");
         primaryStage.setScene(scene);
 
        // primaryStage.setMaximized(true);
